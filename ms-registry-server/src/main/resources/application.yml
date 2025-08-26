@@ -1,3 +1,8 @@
+
+
+server:
+  port: 8761   # Puerto estándar para Eureka Server
+
 spring:
   application:
     name: ms-registry-service
@@ -5,5 +10,11 @@ spring:
     active: development
   config:
     import: optional:configserver:http://root:123456@localhost:7072
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
+eureka:
+  client:
+    register-with-eureka: false   # El servidor no debe registrarse en sí mismo
+    fetch-registry: false
 
